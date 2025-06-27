@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">android-study</string>
+    <string name="reload_button">Reload</string>
+    <string name="title_ll">Linked List</string>
+</resources>
