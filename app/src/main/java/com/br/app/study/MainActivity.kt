@@ -1,21 +1,18 @@
 package com.br.app.study
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.br.app.study.create.LinkedList
-import com.br.app.study.model.Vertex
+import com.br.app.study.ui.ClusterListActivity
+import com.br.app.study.ui.LinkedListActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private val tvList: TextView by lazy { findViewById(R.id.tv_list) }
-    private val btReload: AppCompatButton by lazy { findViewById(R.id.bt_reload) }
-
-    private lateinit var vertex: Vertex
+    private val btLinked: AppCompatButton by lazy { findViewById(R.id.bt_linked) }
+    private val btCluster: AppCompatButton by lazy { findViewById(R.id.bt_cluster) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView() {
         statusBar()
-        configure()
-        preview()
         listeners()
     }
 
@@ -39,18 +34,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun configure() {
-        vertex = LinkedList.generate()
-    }
-
-    private fun preview() {
-        tvList.text = LinkedList.simplePreview(vertex)
-    }
-
     private fun listeners() {
-        btReload.setOnClickListener {
-            configure()
-            preview()
+        btLinked.setOnClickListener {
+            LinkedListActivity.start(this)
+        }
+
+        btCluster.setOnClickListener {
+            ClusterListActivity.start(this)
         }
     }
 }

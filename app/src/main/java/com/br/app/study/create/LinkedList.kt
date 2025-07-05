@@ -1,11 +1,11 @@
 package com.br.app.study.create
 
-import android.graphics.Color
-import android.text.Spannable
 import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
 import com.br.app.study.model.Edge
 import com.br.app.study.model.Vertex
+import com.br.app.study.util.ARROW
+import com.br.app.study.util.setRootColor
+import com.br.app.study.util.whileIfNextNonNull
 import kotlin.random.Random
 
 object LinkedList {
@@ -58,20 +58,6 @@ object LinkedList {
         return Edge(next, previous)
     }
 
-    private fun Vertex.setRootColor(): SpannableStringBuilder {
-        val sValue = this.value.toString()
-        val list = SpannableStringBuilder(if (this.isRoot) sValue else HYPHEN)
-        val rootColor = ForegroundColorSpan(Color.RED)
-        list.setSpan(
-            rootColor,
-            0,
-            sValue.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        return list
-    }
-
     private fun formatSum(vertex: Vertex) = "\n\n\n Sum: ${sum(vertex)}"
 
     private fun formatBigger(vertex: Vertex) = "\n\n Bigger: ${bigger(vertex)}"
@@ -112,17 +98,4 @@ object LinkedList {
 
         return amount
     }
-
-    private fun Vertex.whileIfNextNonNull(rs: (vertex: Vertex?) -> Unit) {
-        var edge = this.edge
-
-        while (edge?.next != null) {
-            val auxVertex = edge.next
-            rs(auxVertex)
-            edge = auxVertex?.edge
-        }
-    }
-
-    private const val HYPHEN = "-"
-    private const val ARROW = "\u279E"
 }
