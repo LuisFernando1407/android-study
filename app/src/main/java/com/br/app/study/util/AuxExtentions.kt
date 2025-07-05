@@ -4,6 +4,10 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.br.app.study.R
 import com.br.app.study.model.Cluster
 import com.br.app.study.model.Vertex
 
@@ -63,4 +67,12 @@ fun Vertex.setRootColor(): SpannableStringBuilder {
     )
 
     return list
+}
+
+fun AppCompatActivity.statusBar(id: Int = R.id.main) {
+    ViewCompat.setOnApplyWindowInsetsListener(findViewById(id)) { v, insets ->
+        val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        insets
+    }
 }

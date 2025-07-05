@@ -7,11 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.br.app.study.R
 import com.br.app.study.create.ClusterList
 import com.br.app.study.model.Cluster
+import com.br.app.study.util.statusBar
 
 class ClusterListActivity : AppCompatActivity() {
 
@@ -33,14 +32,6 @@ class ClusterListActivity : AppCompatActivity() {
         configure()
         preview()
         listeners()
-    }
-
-    private fun statusBar() {
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     private fun configure() {
