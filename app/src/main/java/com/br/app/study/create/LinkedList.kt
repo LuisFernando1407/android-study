@@ -45,11 +45,11 @@ object LinkedList {
         return root
     }
 
-    private fun createVertex(value: Int = Random.nextInt(1, 20)) = Vertex(
+    private fun createVertex(value: Int = Random.nextInt(1, 99)) = Vertex(
         value = value
     )
 
-    private fun createRoot(value: Int = Random.nextInt(1, 20)) = Vertex(
+    private fun createRoot(value: Int = Random.nextInt(1, 99)) = Vertex(
         isRoot = true,
         value = value
     )
